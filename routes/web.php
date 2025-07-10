@@ -33,3 +33,15 @@ Route::get('/attach', function () {
     Post::find(1)->tags()->attach([1, 2]);
     Post::find(2)->tags()->attach([2,3]);
 });
+
+Route::get('/sync', function () {
+    Post::find(2)->tags()->sync([2]);
+});
+
+Route::get('/toggle', function () {
+    Post::find(2)->tags()->toggle([1,2,3]);
+});
+
+Route::get('/detach', function () {
+    Post::find(2)->tags()->detach([1]);
+});
