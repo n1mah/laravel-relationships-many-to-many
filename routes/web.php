@@ -27,3 +27,9 @@ Route::get('/tag/create', function () {
   Tag::create(['title'=>'art']);
   Tag::create(['title'=>'web']);
 });
+
+
+Route::get('/attach', function () {
+    Post::find(1)->tags()->attach([1, 2]);
+    Post::find(2)->tags()->attach([2,3]);
+});
