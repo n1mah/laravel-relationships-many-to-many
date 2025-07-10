@@ -25,6 +25,10 @@ Route::get('/post/with/pivot', function () {
     }
 });
 
+Route::get('/post/1/data', function () {
+    return Post::find(1)->tags;
+});
+
 
 Route::get('/tags', function () {
     return Tag::all();

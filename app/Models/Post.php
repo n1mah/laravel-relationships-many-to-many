@@ -11,6 +11,10 @@ class Post extends Model
 
     public function tags() : BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'post_tag',  'p_id','t_id');
+      /*  return $this->belongsToMany(Tag::class, 'post_tag',  'p_id','t_id')
+            ->as('mytbl')
+            ->withPivot(['prompt','created_at']);*/
+        return $this->belongsToMany(Tag::class, 'post_tag',  'p_id','t_id')
+            ->withPivot(['prompt','created_at']);
     }
 }
