@@ -45,3 +45,12 @@ Route::get('/toggle', function () {
 Route::get('/detach', function () {
     Post::find(2)->tags()->detach([1]);
 });
+
+
+
+Route::get('/attach/with-pivot', function () {
+    Post::find(1)->tags()->attach([
+        1 => ['prompt'=>'value1','created_at'=>now()],
+        2 => ['prompt'=>'value2','created_at'=>now()],
+    ]);
+});
