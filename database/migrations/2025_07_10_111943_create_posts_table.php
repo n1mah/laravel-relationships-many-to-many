@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('body');
             $table->timestamps();
         });
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
+
+            $table->primary(['post_id', 'tag_id']);
+        });
     }
 
     /**
@@ -24,6 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('post_tag');
         Schema::dropIfExists('posts');
     }
 };
