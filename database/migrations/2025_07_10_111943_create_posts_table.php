@@ -20,7 +20,8 @@ return new class extends Migration
         Schema::create('post_tag', function (Blueprint $table) {
             $table->foreignId('p_id')->constrained('posts')->cascadeOnDelete();
             $table->foreignId('t_id')->constrained('tags')->cascadeOnDelete();
-
+            $table->timestamp('created_at');
+            $table->string('prompt');
             $table->primary(['p_id', 't_id']);
         });
     }
