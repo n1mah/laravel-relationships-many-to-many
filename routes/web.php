@@ -12,6 +12,20 @@ Route::get('/posts', function () {
     return Post::all();
 });
 
+
+Route::get('/post/without/pivot', function () {
+    return Post::find(1)->tags;
+});
+
+Route::get('/post/with/pivot', function () {
+//    return Post::find(1)->tags->first()->pivot;
+    foreach (Post::find(1)->tags as $tag) {
+//        dd($tag->pivot);
+        echo $tag->title . " - ";
+    }
+});
+
+
 Route::get('/tags', function () {
     return Tag::all();
 });
@@ -53,4 +67,7 @@ Route::get('/attach/with-pivot', function () {
         1 => ['prompt'=>'value1','created_at'=>now()],
         2 => ['prompt'=>'value2','created_at'=>now()],
     ]);
+
+
+
 });
